@@ -1,12 +1,10 @@
 #given
-p_s = 0.01
+p_s = 0.02
 p_free_given_s = 0.80
 p_free_given_not_s = 0.10
 
-#probability of not spam
+#total free
 p_not_s = 1 - p_s
-
-#calculate the probability of word free
 p_free = p_free_given_s * p_s + p_free_given_not_s * p_not_s
 
 #applying bayes theorem
