@@ -4,27 +4,33 @@ import uuid
 
 app = FastAPI()
 
-
-
-#data model for incoming item
-class ItemRequest(BaseModel):
-    name: str
-
-#in-memory storage and the /item POST endpoint
-
 #this list hold all the items temporarily
-items_db = []
+item_db = []
 
-#create health check
+#pydentic model that describe JASON file
+
+class ItemRequest(BaseModel):
+    name : str
+
+
 @app.get("/health")
 def health_check():
     return{"status":"ok"}
 
+@app.get("/items")
+def get_items():
+    return{"items": item_db}
+
+
+
+
+
 @app.post("/items")
-def create_item(item: ItemRequest):
-    new_item = {"id": str(uuid.uuid4()), "name": item.name}
-    items_db.append(new_item)
+def create_list(item: ItemRequest):
+    new_item = {"ID": str(uuid.uuid4()), "name": item.name}
+    item_db.append(new_item)
     return new_item
+
 
 
 

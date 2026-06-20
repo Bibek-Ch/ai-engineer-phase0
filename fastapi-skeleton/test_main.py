@@ -8,4 +8,4 @@ def test_create_item():
     assert response.status_code == 200
     data = response.json()
     assert data["name"] == "bread"
-    assert "id" in data
+    assert "ID" in data
